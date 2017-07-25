@@ -53,7 +53,7 @@ function randomImage(e){
     }
   }
 
-  if(Images.clickCount < 3){
+  if(Images.clickCount < 25){
     Images.randomIndexHolder = [];
     for(var i = 0; i < 3; i++){
       var repeatIndex = false;
@@ -95,5 +95,3 @@ loadImg();
 document.getElementById('img_0').addEventListener('click', randomImage);
 document.getElementById('img_1').addEventListener('click', randomImage);
 document.getElementById('img_2').addEventListener('click', randomImage);
-
-//___________LIST OF RESULT_____________________
