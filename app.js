@@ -82,9 +82,9 @@ function randomImage(e){
     document.getElementById('img_0').removeEventListener('click', randomImage);
     document.getElementById('img_1').removeEventListener('click', randomImage);
     document.getElementById('img_2').removeEventListener('click', randomImage);
-    for(var i = 0; i < Images.all.length; i++){
+    for(var m = 0; m < Images.all.length; m++){
       Images.liEl = document.createElement('li')
-      Images.liEl.textContent = Images.all[i].name + ' is shown ' + Images.all[i].view + ' times, ' + 'and voted ' + Images.all[i].vote + ' times.';
+      Images.liEl.textContent = Images.all[m].name + ' is shown ' + Images.all[m].view + ' times, ' + 'and voted ' + Images.all[m].vote + ' times.';
       document.getElementById('result').appendChild(Images.liEl);
     }
   }
