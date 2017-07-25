@@ -2,6 +2,11 @@
   outline: 1px dashed skyblue;
 }
 
+#imgs img {
+  max-width: 30%;
+  max-height: 250px;
+}
+
 #result {
   font-family: helvetica, sans-serif;
   font-size: 1.1em;
@@ -13,4 +18,12 @@
 
 #result li:nth-child(even) {
   background-color: pink;
+}
+
+/*#list_btn {
+
+}*/
+
+#charts {
+  outline: 1px solid red;
 }

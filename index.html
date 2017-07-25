@@ -5,19 +5,25 @@
     <title>BusMall Marketing Study</title>
     <link rel="stylesheet" type="text/css" href="reset_css.css" />
     <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
   </head>
   <body>
     <h1>BusMall Marketing Study</h1>
     <h2>Potential BusMall Products</h2>
     <P>Tell us what you would most likely purchase by clicking on the pictures.</p>
     <section id="imgs">
-      <img id="img_0" style="width: 30%" />
-      <img id="img_1" style="width: 30%" />
-      <img id="img_2" style="width: 30%" />
+      <img id="img_0" />
+      <img id="img_1" />
+      <img id="img_2" />
     </section>
     <h2>Result</h2>
+    <button id="list_btn">Show a List</button>
+    <button id="chart_btn">Show a Chart</button>
     <ul id="result">
     </ul>
-    <script src="app.js"></script>
+    <canvas id="charts" height="300px" width="800px">
+    </canvas>
+    <script type="application/javascript" src="app.js"></script>
+    <script type="application/javascript" src="charts.js"></script>
   </body>
 </html>

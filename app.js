@@ -44,6 +44,10 @@ function loadImg() {
 
 //___________EVENT HANDLER FUNC__________________
 function randomImage(e){
+  if(!e.target.alt){
+    alert('Can\'t you click on an image jesus...');
+    return
+  }
   console.log('_________________Target alt is: ' + e.target.alt);
   console.log('Last shown img index: ' + Images.lastShown + ' ' + Images.all[Images.lastShown[0]].name + ', ' + Images.all[Images.lastShown[1]].name + ', ' + Images.all[Images.lastShown[2]].name);
 
@@ -53,7 +57,7 @@ function randomImage(e){
     }
   }
 
-  if(Images.clickCount < 25){
+  if(Images.clickCount < 5){
     Images.randomIndexHolder = [];
     for(var i = 0; i < 3; i++){
       var repeatIndex = false;
@@ -79,19 +83,21 @@ function randomImage(e){
     console.log('Currently showing: ' + Images.randomIndexHolder);
     Images.lastShown = Images.randomIndexHolder;
   } else {
-    document.getElementById('img_0').removeEventListener('click', randomImage);
-    document.getElementById('img_1').removeEventListener('click', randomImage);
-    document.getElementById('img_2').removeEventListener('click', randomImage);
-    for(var m = 0; m < Images.all.length; m++){
-      Images.liEl = document.createElement('li')
-      Images.liEl.textContent = Images.all[m].name + ' is shown ' + Images.all[m].view + ' times, ' + 'and voted ' + Images.all[m].vote + ' times.';
-      document.getElementById('result').appendChild(Images.liEl);
-    }
+    document.getElementById('imgs').removeEventListener('click', randomImage);
   }
 }
 
+function listRender(){
+  if(Images.clickCount >= 5){
+    for(var m = 0; m < Images.all.length; m++){
+      Images.liEl = document.createElement('li');
+      Images.liEl.textContent = Images.all[m].name + ' is shown ' + Images.all[m].view + ' times, ' + 'and voted ' + Images.all[m].vote + ' times.';
+      document.getElementById('result').appendChild(Images.liEl);
+    }
+  } else {
+    return alert('You haven\'t finished the study!');
+  }
+}
 loadImg();
-
-document.getElementById('img_0').addEventListener('click', randomImage);
-document.getElementById('img_1').addEventListener('click', randomImage);
-document.getElementById('img_2').addEventListener('click', randomImage);
+document.getElementById('imgs').addEventListener('click', randomImage);
+document.getElementById('list_btn').addEventListener('click', listRender);
