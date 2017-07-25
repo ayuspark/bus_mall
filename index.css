@@ -1,3 +1,16 @@
 * {
   outline: 1px dashed skyblue;
 }
+
+#result {
+  font-family: helvetica, sans-serif;
+  font-size: 1.1em;
+}
+
+#result li {
+  margin: 7px auto 7px 10px;
+}
+
+#result li:nth-child(even) {
+  background-color: pink;
+}
