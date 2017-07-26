@@ -16,13 +16,18 @@
       <img id="img_1" />
       <img id="img_2" />
     </section>
-    <h2>Result</h2>
-    <button id="list_btn">Show a List</button>
-    <button id="chart_btn">Show a Chart</button>
-    <ul id="result">
-    </ul>
-    <canvas id="charts" height="300px" width="800px">
-    </canvas>
+    <section>
+      <h2>Result</h2>
+    <div class="buttons">
+      <button id="list_btn">Show a List</button>
+      <button id="chart_btn">Show a Chart</button>
+    </div>
+      <div style="max-width: 800">
+        <ul id="list_result">
+        </ul>
+      </div>
+      <canvas id="charts" height="500px" width="960px"></canvas>
+    </section>
     <script type="application/javascript" src="app.js"></script>
     <script type="application/javascript" src="charts.js"></script>
   </body>
