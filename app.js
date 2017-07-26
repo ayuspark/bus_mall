@@ -88,8 +88,6 @@ function randomImage(e){
 }
 
 //___________RENDER LIST______________________________
-document.getElementById('list_result').style.display = 'none';
-document.getElementById('charts').style.display = 'none';
 function listRender(){
   document.getElementById('list_result').innerHTML = '';
   document.getElementById('charts').style.display = 'none';
@@ -106,5 +104,7 @@ function listRender(){
 }
 
 loadImg();
+document.getElementById('list_result').style.display = 'none';
+document.getElementById('charts').style.display = 'none';
 document.getElementById('imgs').addEventListener('click', randomImage);
 document.getElementById('list_btn').addEventListener('click', listRender);

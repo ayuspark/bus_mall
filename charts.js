@@ -9,7 +9,7 @@ function allVoteArray(){
 }
 
 //___________CONFIGURE BAR COLOR_________________________________
-var hoverBarColor = new Array(Images.all.length).fill("skyblue");
+var hoverBarColor = new Array(Images.all.length).fill('skyblue');
 var barColor = [];
 for(var i = 0; i < Images.all.length; i++){
   var r, g, b, a;
@@ -40,7 +40,7 @@ function drawBarChart() {
     },
     options: {
       // responsive: false,
-      animation: {duration: 1000, easing: 'easeOutBounce'}
+      animation: {duration: 9000, easing: 'easeOutBounce'}
     },
   });//END of CHART ARGUMENT
 }
