@@ -7,7 +7,9 @@ function allVoteArray(){
   }
   return Images.allVotes;
 }
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++
+//USERS CHART, UPDATE DURING IMG CHOOSING             +
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++
 //___________CONFIGURE BAR COLOR_________________________________
 var hoverBarColor = new Array(Images.all.length).fill('skyblue');
 var barColor = [];
@@ -40,9 +42,36 @@ function drawBarChart() {
     },
     options: {
       // responsive: false,
-      animation: {duration: 9000, easing: 'easeOutBounce'}
+      animation: {duration: 1000, easing: 'easeOutBounce'}
+    },
+  });//END of CHART ARGUMENT
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//FINAL CHART                                           +
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function finalChart() {
+  document.getElementById('final_chart_section').style.display = 'block';
+  // allVoteArray();
+  var ctx = document.getElementById('final_chart').getContext('2d');
+  new Chart(ctx,{
+    type: 'bar',
+    data: {
+      labels: Images.allNames,
+      datasets: [
+        {
+          label: 'All Vote Chart',
+          data: lsFinalVote,
+          backgroundColor: 'rgba(62, 68, 68, 1)',
+          hoverBackgroundColor: hoverBarColor,
+          borderWidth: 1,
+        }],
+    },
+    options: {
+      animation: {duration: 1000, easing: 'easeOutBounce'}
     },
   });//END of CHART ARGUMENT
 }
 
 document.getElementById('chart_btn').addEventListener('click', drawBarChart);
+document.getElementById('final_chart_btn').addEventListener('click', finalChart);
