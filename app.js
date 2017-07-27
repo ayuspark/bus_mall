@@ -56,7 +56,7 @@ function randomImage(e){
     }
   }
 
-  if(Images.clickCount < 5){
+  if(Images.clickCount < 25){
     Images.randomIndexHolder = [];
     for(i = 0; i < 3; i++){
       var repeatIndex = false;
@@ -89,6 +89,7 @@ function randomImage(e){
     Images.lastShown = Images.randomIndexHolder;
   } else {
     document.getElementById('imgs').removeEventListener('click', randomImage);
+    alert("You have finished the study! 25 clicks!")
     //___________ACTIVATE LOCAL STORAGE____________
     allVoteArray();
     lsFinalVote = Images.allVotes.map(function(count, index){
@@ -102,7 +103,7 @@ function randomImage(e){
 function listRender(){
   document.getElementById('list_result').innerHTML = '';
   document.getElementById('charts').style.display = 'none';
-  if(Images.clickCount >= 5){
+  if(Images.clickCount >= 25){
     for(var m = 0; m < Images.all.length; m++){
       Images.liEl = document.createElement('li');
       Images.liEl.textContent = Images.all[m].name + ' is shown ' + Images.all[m].view + ' times, ' + 'and voted ' + Images.all[m].vote + ' times.';
@@ -114,11 +115,11 @@ function listRender(){
   }
 }
 
-//++++++++++++++++++++++++++++++++++++++++++++++++
+//___________CHECK LOCAL STORAGE________________
 if(localStorage.getItem('lsFinalVote') !== null){
   lsFinalVote = JSON.parse(localStorage.getItem('lsFinalVote'));
 }
-if(localStorage.getItem('lsClickCount') !== null && JSON.parse(localStorage.getItem('lsClickCount')) < 5){
+if(localStorage.getItem('lsClickCount') !== null && JSON.parse(localStorage.getItem('lsClickCount')) < 25){
   Images.clickCount = JSON.parse(localStorage.getItem('lsClickCount'));
   Images.all = JSON.parse(localStorage.getItem('lsAll'));
   loadImg();

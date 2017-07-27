@@ -11,7 +11,7 @@ function allVoteArray(){
 //USERS CHART, UPDATE DURING IMG CHOOSING             +
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++
 //___________CONFIGURE BAR COLOR_________________________________
-var hoverBarColor = new Array(Images.all.length).fill('skyblue');
+var hoverBarColor = new Array(Images.all.length).fill('#405d27');
 var barColor = [];
 for(var i = 0; i < Images.all.length; i++){
   var r, g, b, a;
@@ -33,7 +33,7 @@ function drawBarChart() {
       labels: Images.allNames,
       datasets: [
         {
-          label: 'BusMall Product Vote Chart',
+          label: 'Current User Vote',
           data: Images.allVotes,
           backgroundColor: barColor,
           hoverBackgroundColor: hoverBarColor,
