@@ -14,10 +14,9 @@ Images.allVotes = [];
 Images.lastShown = [];//store previous shown img
 Images.randomIndexHolder = [];
 Images.clickCount = 0;//count not exceed 25
-
-for(var i = 0; i < Images.allNames.length; i++){
-  new Images(Images.allNames[i]);
-}//create 20 img objects
+var lsFinalVote = new Array(20).fill(0);
+var lsAll = [];
+var lsClickCount = 0;
 
 //___________FIRST LOAD IMG__________________
 function loadImg() {
@@ -57,7 +56,7 @@ function randomImage(e){
     }
   }
 
-  if(Images.clickCount < 25){
+  if(Images.clickCount < 5){
     Images.randomIndexHolder = [];
     for(i = 0; i < 3; i++){
       var repeatIndex = false;
@@ -79,11 +78,23 @@ function randomImage(e){
     }
 
     Images.clickCount ++;
+    lsClickCount = Images.clickCount;
+    localStorage.setItem('lsClickCount', JSON.stringify(lsClickCount));
+
+    lsAll = Images.all;
+    localStorage.setItem('lsAll', JSON.stringify(lsAll));
+
     console.log('Click count is:' + Images.clickCount);
     console.log('Currently showing: ' + Images.randomIndexHolder);
     Images.lastShown = Images.randomIndexHolder;
   } else {
     document.getElementById('imgs').removeEventListener('click', randomImage);
+    //___________ACTIVATE LOCAL STORAGE____________
+    allVoteArray();
+    lsFinalVote = Images.allVotes.map(function(count, index){
+      return count + lsFinalVote[index];
+    });
+    localStorage.setItem('lsFinalVote', JSON.stringify(lsFinalVote));
   }
 }
 
@@ -91,7 +102,7 @@ function randomImage(e){
 function listRender(){
   document.getElementById('list_result').innerHTML = '';
   document.getElementById('charts').style.display = 'none';
-  if(Images.clickCount >= 25){
+  if(Images.clickCount >= 5){
     for(var m = 0; m < Images.all.length; m++){
       Images.liEl = document.createElement('li');
       Images.liEl.textContent = Images.all[m].name + ' is shown ' + Images.all[m].view + ' times, ' + 'and voted ' + Images.all[m].vote + ' times.';
@@ -103,8 +114,23 @@ function listRender(){
   }
 }
 
-loadImg();
+//++++++++++++++++++++++++++++++++++++++++++++++++
+if(localStorage.getItem('lsFinalVote') !== null){
+  lsFinalVote = JSON.parse(localStorage.getItem('lsFinalVote'));
+}
+if(localStorage.getItem('lsClickCount') !== null && JSON.parse(localStorage.getItem('lsClickCount')) < 5){
+  Images.clickCount = JSON.parse(localStorage.getItem('lsClickCount'));
+  Images.all = JSON.parse(localStorage.getItem('lsAll'));
+  loadImg();
+} else {
+  for(var i = 0; i < Images.allNames.length; i++){
+    new Images(Images.allNames[i]);
+  }//create 20 img objects
+  loadImg();
+}
+
 document.getElementById('list_result').style.display = 'none';
 document.getElementById('charts').style.display = 'none';
+document.getElementById('final_chart_section').style.display = 'none';
 document.getElementById('imgs').addEventListener('click', randomImage);
 document.getElementById('list_btn').addEventListener('click', listRender);
