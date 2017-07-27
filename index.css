@@ -1,25 +1,26 @@
 * {
-  outline: 1px dashed skyblue;
+  /*outline: 1px dashed skyblue;*/
   box-sizing: border-box;
 }
 
 h1 {
-  font: 3em helvetica, sans-serif;
+  font: 3em 'Ubuntu',sans-serif;
+  font-weight: 600;
   color: #405d27;
   text-align: center;
   margin: 30px auto 10px auto;
 }
 
 h2 {
-  font: 2em helvetica, sans-serif;
+  font: 2em 'Ubuntu', sans-serif;
   color: #86af49;
   text-align: center;
   background-color: #deeaee;
-  padding: 10px 0;
+  padding: 1em 0;
 }
 
 p {
-  font: 1.2em helvetica, sans-serif;
+  font: 1.2em 'Slabo 27px', serif;
   width: 960px;
   margin: 20px auto;
   text-align: center;
@@ -28,7 +29,7 @@ p {
 #imgs {
   width: 960px;
   height: 250px;
-  margin: 10px auto 40px auto;
+  margin: 10px auto 20px auto;
   text-align: center;
   /*display: block;*/
   /*clear: both;*/
@@ -45,9 +46,15 @@ p {
   margin-bottom: 0;
 }
 
+#imgs img:hover {
+  cursor: pointer;
+  border-bottom: 5px solid #405d27;
+  /*transition: 300ms;*/
+}
+
 .buttons {
   text-align: center;
-  margin: 30px auto;
+  margin: 10px auto;
 }
 
 .buttons button {
@@ -56,7 +63,7 @@ p {
   background-color: #3e4444;
   padding: 15px 30px;
   color: #deeaee;
-  font: 1.2em helvetica, sans-serif;
+  font: 1.2em 'Ubuntu', sans-serif;
   margin: 5px 20px;
 }
 
@@ -67,7 +74,7 @@ p {
   transform: rotate(270deg);
   width: 150px;
   height: 30px;
-  font: 1em helvetica, sans-serif;
+  font: 1em 'Ubuntu', sans-serif;
   color: #deeaee;
   padding: 0;
   position: fixed;
@@ -100,7 +107,7 @@ button:hover {
 }
 
 #list_result {
-  font-family: helvetica, sans-serif;
+  font-family: 'Slabo 27px', serif;
   font-size: 1.1em;
   width: 70%;
   margin: 3px auto;
